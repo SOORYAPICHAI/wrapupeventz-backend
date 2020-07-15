@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       foreignKey: '_id'
     });
-    answers.hasMany(models.questions, {
+    answers.belongsTo(models.questions, {
       onDelete: 'CASCADE',
       foreignKey: "_id", 
     });

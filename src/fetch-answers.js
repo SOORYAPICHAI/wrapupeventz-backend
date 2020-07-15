@@ -9,7 +9,8 @@ profile_id
     const {
      answers,
     profile,
-    questions
+    questions,
+    category
     } = models;
 
     const created_at = new Date(),
@@ -18,15 +19,10 @@ profile_id
     const idUUID = uuid4();
    
 const FetchCategory = () =>{
-    const _variable = {_id:profile_id}
+    const _variable = {profile_id:profile_id}
     let _arr = []
-    profile.findAll({
-        where: _variable,
-        attributes: ['_id'],
-        include: [
-            {
-                model: answers
-            }]
+    answers.findAll({
+        where: _variable,     
     })
         .then((data) => {
 
