@@ -24,11 +24,13 @@ module.exports = (sequelize, DataTypes) => {
   });
   questions.associate = function (models) {
     // associations can be defined here
-    questions.hasMany(models.answers, {
-      foreignKey: 'question_id'
+    questions.hasOne(models.answers, {
+      onDelete: 'CASCADE',
+      foreignKey: '_id'
     });
     questions.hasOne(models.category, {
-      foreignKey: 'id'
+      onDelete: 'CASCADE',
+      foreignKey: '_id'
     });
   };
   return questions;

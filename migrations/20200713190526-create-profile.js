@@ -18,7 +18,9 @@ module.exports = {
       },
       _id: {
         type: Sequelize.UUID,
-        primaryKey: true      },
+        primaryKey: true ,
+        
+       },
       photo: {
         type: Sequelize.STRING
       },

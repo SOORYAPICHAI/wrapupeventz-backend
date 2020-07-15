@@ -42,8 +42,8 @@ console.log(JSON.stringify(connectionstring))
 app.use(
     postgraphile(connectionstring, {
         watchPg: true,
-        graphiql: false,
-        enhanceGraphiql: false
+        graphiql: true,
+        enhanceGraphiql: true
     })
 );
 

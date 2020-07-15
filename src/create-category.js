@@ -4,11 +4,11 @@ const fs = require('fs');
 
 module.exports = (req, res) => {
     const {
+category:_category,
 category_id
     } = req.body;
     const {
      category,
-     questions
     } = models;
 
     const created_at = new Date(),
@@ -17,12 +17,12 @@ category_id
     const idUUID = uuid4();
    
 const FetchCategory = () =>{
-    const _variable = {category_id: category_id}
-    questions.findAll({
+    const _variable = _category ? {type: _category} :  {_id: category_id}
+    category.findOne({
         where: _variable,
-        attributes: ['_id', 'question']
+        attributes: ['_id']
     })
-        .then((data) => { 
+        .then((data) => {
             return res.send(data)
 
         }).catch((error) => {
@@ -37,7 +37,26 @@ const FetchCategory = () =>{
 
         FetchCategory()
         }
-
+        else{
+try {
+    const __id = idUUID
+    const _newcategory = {
+        _id : __id,
+        type:_category,
+        createdAt:created_at,
+        updatedAt: updated_at
+    }
+    category.create(_newcategory).then(val=>{
+        FetchCategory()
+    })
+    .catch(val=>{
+        res.status(500).send({ message: 'internal server error 2', status: false });
+    })
+  
+} catch (error) {
+    
+}
+        }
     } catch (e) {
         console.log(e);
         res.status(200).send({ message: 'internal server error', status: 500 });

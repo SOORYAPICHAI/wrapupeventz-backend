@@ -8,7 +8,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       category_id: {
-        type: Sequelize.UUID
+        type: Sequelize.UUID,
+        onDelete: 'CASCADE',
+        references:{          
+          model:'categories',
+          key:'_id'
+        }
       },
       question: {
         type: Sequelize.STRING
@@ -16,6 +21,7 @@ module.exports = {
       _id: {
         type: Sequelize.UUID,
         primaryKey: true
+       
       },
       createdAt: {
         allowNull: false,

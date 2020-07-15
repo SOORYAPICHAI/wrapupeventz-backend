@@ -5,7 +5,6 @@ const fs = require('fs');
 module.exports = (req, res) => {
     const {
 questions:_questions,
-category:_category,
 category_id
     } = req.body;
 console.log(_questions.constructor === Array,"_questions")
@@ -17,65 +16,41 @@ console.log(_questions.constructor === Array,"_questions")
     const created_at = new Date(),
         updated_at = new Date();
 
-    const idUUID = uuid4();
+    
    
    
 
     try {
         // create visit record
        if(category_id){
-        _questions.map(val=>{
-        const __questions = {
-            category_id:category_id,
-            question:val,
-            _id:idUUID,
-            createdAt:created_at,
-            updatedAt: updated_at
+        const _uploadQuestions = async (user_ids) => {
+            return new Promise(async (resolve, reject) => {
+                let calls = _questions.map(async (val) => {
+                    let idUUID = uuid4();
+                    const __questions = {
+                        category_id:category_id,
+                        question:val,
+                        _id:idUUID,
+                        createdAt:created_at,
+                        updatedAt: updated_at
+                    }
+                    return await questions.create(__questions)    
+                })
+                await Promise.all(calls).then(data => {
+                    resolve(true);
+                })
+                    .catch(err => {
+                        console.log(err);
+                        reject(false)
+                    })
+            })
         }
-        questions.create(__questions)
-        .then(async (data) => {
-            res.status(200).send({message:'data saved successfully'});
-        }).catch((error) => {
-            console.log(error)
-            res.status(500).send({ message: 'internal server error 2', status: false });
-        });
-       })
-        }
-        else{
-try {
-    const __id = idUUID
-    const _newcategory = {
-        _id : __id,
-        type:_category,
-        createdAt:created_at,
-        updatedAt: updated_at
-    }
-    category.create(_newcategory).then(val=>{
-        _questions.map(val=>{
-            const __questions = {
-                category_id:__id,
-                question:val,
-                _id:idUUID,
-                createdAt:created_at,
-                updatedAt: updated_at
-            }
-            questions.create(__questions)
-            .then(async (data) => {
-                res.status(200).send({message:'data saved successfully'});
-            }).catch((error) => {
-                console.log(error)
-                res.status(500).send({ message: 'internal server error 2', status: false });
-            });
-           })
-    })
-    .catch(val=>{
-        res.status(500).send({ message: 'internal server error 2', status: false });
-    })
-  
-} catch (error) {
     
-}
+_uploadQuestions().then(val=>{
+    res.status(200).send({message:'data saved successfully'});
+   }).catch(()=>{})
         }
+     
     } catch (e) {
         console.log(e);
         res.status(200).send({ message: 'internal server error', status: 500 });
