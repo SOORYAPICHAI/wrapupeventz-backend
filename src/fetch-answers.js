@@ -22,7 +22,12 @@ const FetchCategory = () =>{
     const _variable = {profile_id:profile_id}
     let _arr = []
     answers.findAll({
-        where: _variable,     
+        where: _variable,
+        include: 
+            {
+                model: questions
+            }
+            
     })
         .then((data) => {
 
