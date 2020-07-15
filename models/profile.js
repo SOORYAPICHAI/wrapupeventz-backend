@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     profile.hasMany(models.answers, {
       onDelete: 'CASCADE',
-      foreignKey: '_id'
+      foreignKey: 'profile_id'
     });
   };
   return profile;

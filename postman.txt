@@ -1,10 +1,52 @@
-"answers":[{"id":"c43ea902-3ceb-43fd-94f6-335f351d92d3","answer":"How many years experience ?"}],
-"profile_id":"0aad030f-84dc-45cd-8751-a737f377d3cf"
+Api : /createcategories
+Body : {"category":"Graphics"}
+
+-----
+
+Api : /createquestionsanswers
+Body : {"questions":["How many years experience ?"],
+"category_id":<CATEGORY_ID>}
+
+------
+
+Api : /fetchquestions
+Body : {category_id: <CATEGORY_ID>}
+
+-------
+
+Api : /postanswers
+Body : {
+"answers":[{"id":<QUESTION_ID>,"answer":"How many years experience ?"}],
+"profile_id":"<PROFILE_ID>"
+}
+
+-------
+
+Api : /updateprofile
+Body : {
+email:<EMAIL_ID>, mobile:<MOBILE_NO>, name:<NAME>,photo:<PHOTO_PATH>
+}
+
+--------
+
+Api : /fetchanswers
+Body : "profile_id":<PROFILE_ID>
 
 
 
-"questions":["How many years experience ?"],
-"category_id":"3820c62e-b6ff-4108-86a9-22e9b1759be4"
 
 
-"category":"Graphics"
+
+
+
+
+
+
+
+
+
+
+
+
+
+

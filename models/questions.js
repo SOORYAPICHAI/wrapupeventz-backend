@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     questions.hasMany(models.answers, {
       onDelete: 'CASCADE',
-      foreignKey: '_id'
+      foreignKey: 'question_id'
     });
     questions.belongsTo(models.category, {
       onDelete: 'CASCADE',
