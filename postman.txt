@@ -1,52 +1,15 @@
-Api : /createcategories
-Body : {"category":"Graphics"}
+"email":"aaa",
+"mobile":"8965784569",
+"name":"king",
+"photo":"sslkf"
 
------
-
-Api : /createquestionsanswers
-Body : {"questions":["How many years experience ?"],
-"category_id":<CATEGORY_ID>}
-
-------
-
-Api : /fetchquestions
-Body : {category_id: <CATEGORY_ID>}
-
--------
-
-Api : /postanswers
-Body : {
-"answers":[{"id":<QUESTION_ID>,"answer":"How many years experience ?"}],
-"profile_id":"<PROFILE_ID>"
-}
-
--------
-
-Api : /updateprofile
-Body : {
-email:<EMAIL_ID>, mobile:<MOBILE_NO>, name:<NAME>,photo:<PHOTO_PATH>
-}
-
---------
-
-Api : /fetchanswers
-Body : "profile_id":<PROFILE_ID>
+"answers":[{"id":"f018446e-97ab-4954-8910-7f43df4dc598","answer":"How many years experience ?"}],
+"profile_id":"aa8b3d30-5306-466d-b5cf-916b8dcefee4"
 
 
 
+"questions":["How many years experience ?"],
+"category_id":"f018446e-97ab-4954-8910-7f43df4dc598"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+"category":"Graphics"

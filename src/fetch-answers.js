@@ -24,9 +24,14 @@ const FetchCategory = () =>{
     answers.findAll({
         where: _variable,
         include: 
-            {
-                model: questions
-            }
+            [{
+                model: questions,
+                include:{
+                    model: category
+                },
+            },
+            
+        ]
             
     })
         .then((data) => {

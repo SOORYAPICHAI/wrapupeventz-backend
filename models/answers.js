@@ -29,11 +29,11 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     answers.belongsTo(models.profile, {
       onDelete: 'CASCADE',
-      foreignKey: '_id'
+      foreignKey: 'profile_id'
     });
     answers.belongsTo(models.questions, {
       onDelete: 'CASCADE',
-      foreignKey: "_id", 
+      foreignKey: "question_id", 
     });
   };
   return answers;

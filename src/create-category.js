@@ -5,7 +5,8 @@ const fs = require('fs');
 module.exports = (req, res) => {
     const {
 category:_category,
-category_id
+category_id,
+view_categories
     } = req.body;
     const {
      category,
@@ -31,11 +32,29 @@ const FetchCategory = () =>{
         });
 }   
 
+
+const FetchAllCategory = () =>{
+    const _variable = _category ? {type: _category} :  {_id: category_id}
+    category.findAll({
+        // where: _variable,
+        attributes: ['_id', 'type']
+    })
+        .then((data) => {
+            return res.send(data)
+
+        }).catch((error) => {
+            console.log(error)
+            res.status(500).send({ message: 'username and Password not valid', status: false });
+        });
+}  
     try {
         // create visit record
        if(category_id){
 
         FetchCategory()
+        }
+        else if(view_categories){
+            FetchAllCategory()
         }
         else{
 try {
