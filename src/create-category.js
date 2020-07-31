@@ -21,7 +21,7 @@ const FetchCategory = () =>{
     const _variable = _category ? {type: _category} :  {_id: category_id}
     category.findOne({
         where: _variable,
-        attributes: ['_id']
+        attributes: ['_id', 'type']
     })
         .then((data) => {
             return res.send(data)
@@ -47,6 +47,8 @@ const FetchAllCategory = () =>{
             res.status(500).send({ message: 'username and Password not valid', status: false });
         });
 }  
+
+
     try {
         // create visit record
        if(category_id){

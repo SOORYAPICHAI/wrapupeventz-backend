@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   questions.init({
     category_id: {type:DataTypes.UUID},
     question: {type:DataTypes.STRING},
+    field_json:{type:DataTypes.JSON},
     _id: {type:DataTypes.UUID, primaryKey:true}
   }, {
     sequelize,
