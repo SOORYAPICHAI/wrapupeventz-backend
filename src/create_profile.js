@@ -1,10 +1,9 @@
 const models = require('../models');
 var uuid4 = require('uuid4');
 const fs = require('fs');
-
 module.exports = (req, res) => {
     const {
-email,mobile,name,photo
+email,mobile,name,photo,gender,dob,city_state,pincode
     } = req.body;
     const {
      profile,
@@ -25,11 +24,16 @@ email,mobile,name,photo
                 mobile:mobile,
                 name:name,
                 photo:photo,
+                gender:gender,
+                dob:dob,
+                city_state:city_state,
+                pincode:pincode,
                 createdAt:created_at,
                 updatedAt: updated_at
             }
             profile.create(_newcategory).then(val=>{
-                res.status(200).send({ message: 'Saved successfully'});
+
+                res.status(200).send({ message: 'Saved successfully', _val:val});
             })
             .catch(err=>{
                 console.log(err)

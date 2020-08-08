@@ -7,6 +7,8 @@ module.exports = (req, res) => {
 profile_id,
 answers:_answers
     } = req.body;
+
+    console.log("hello", _answers)
     const {
 answers
     } = models;
@@ -24,6 +26,7 @@ answers
         const _uploadQuestions = async (user_ids) => {
             return new Promise(async (resolve, reject) => {
                 let calls = _answers.map(async (val) => {
+                    console.log("---------------", val)
                     let idUUID = uuid4();
                     const __answers = {
                         question_id:val.id,

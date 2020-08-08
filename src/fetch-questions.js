@@ -20,7 +20,7 @@ const FetchCategory = () =>{
     const _variable = {category_id: category_id}
     questions.findAll({
         where: _variable,
-        attributes: ['_id', 'question']
+        attributes: ['_id', 'question', 'field_json']
     })
         .then((data) => { 
             return res.send(data)
