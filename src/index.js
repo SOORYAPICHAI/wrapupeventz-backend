@@ -1,7 +1,7 @@
 const express = require('express');
 const OtherRouter = express.Router();
 
-const { upload } = require("./multer");
+// const { upload } = require("./multer");
 
 // Load dependencies
 // const aws = require('aws-sdk');
@@ -62,7 +62,7 @@ OtherRouter.post('/postanswers', PostAnswers)
 
 OtherRouter.post('/updateprofile', CreateProfiles)
 
-OtherRouter.post('/upload',upload, ProfileImageUpload)
+OtherRouter.post('/upload', ProfileImageUpload)
 
 // OtherRouter.post('/updateprofileimage', ProfileImageUpload)
 
