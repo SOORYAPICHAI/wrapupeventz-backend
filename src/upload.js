@@ -12,8 +12,9 @@ module.exports = (req, res) => {
   // console.log(req.files['file-upload']);
 
   const s3 = new aws.S3({
-    // accessKeyId: "AKIAIP4TRX6T2SY6BSSQ",
-    // secretAccessKey: "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",
+    accessKeyId: "AKIAIHNRLRTBU6VPAJWA",
+    secretAccessKey: "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",
+
     Bucket: "wrapupeventzimages",
   });
   const idUUID = uuid4();
