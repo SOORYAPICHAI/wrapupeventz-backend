@@ -12,8 +12,8 @@ module.exports = (req, res) => {
   // console.log(req.files['file-upload']);
 
   const s3 = new aws.S3({
-    accessKeyId: "AKIAIHNRLRTBU6VPAJWA",
-    secretAccessKey: "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",
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 
     Bucket: "wrapupeventzimages",
   });
