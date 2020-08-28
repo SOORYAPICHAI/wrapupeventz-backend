@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   answers.init(
     {
       question_id: { type: DataTypes.UUID },
-      answer: { type: DataTypes.STRING },
+      answer: { type: DataTypes.TEXT },
       _id: { type: DataTypes.UUID, primaryKey: true },
       profile_id: { type: DataTypes.UUID, primaryKey: true },
     },

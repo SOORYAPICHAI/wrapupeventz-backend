@@ -44,17 +44,23 @@ module.exports = (req, res) => {
   };
 
   const subMapFunc = async (val) => {
-    return  new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       // console.log('-------------');
       // console.log(req.files[val].constructor === Array ? req.files[val] :[req.files[val]])
       // console.log('-------------');
       let _keys = Object.keys(req.files);
-      let _mapper = req.files[val].constructor === Array ? req.files[val] :[req.files[val]]
-      let calls = await _mapper.map(async (subVal) => {
-        console.log('subVal',subVal);
+      let _mapper =
+        req.files[val].constructor === Array
+          ? req.files[val]
+          : [req.files[val]];
+      let calls = await _mapper.map(async (subVal,i) => {
+
+        console.log("subVal", subVal);
         var params = {
           Bucket: "wrapupeventzimages",
-          Key: `answers/profile_${req.body.profile_id[0]}/question_${val}-${uuid4()}.${subVal.name.split(".")[1]}`, // File name you want to save as in S3
+          Key: `answers/profile_${
+            req.body.profile_id[0]
+          }/question_${val}-${subVal.name.split(".")[0]}.${subVal.name.split(".")[1]}`, // File name you want to save as in S3
           Body: subVal.data,
           ACL: "public-read",
           ContentType: subVal.mimetype,
@@ -121,11 +127,11 @@ module.exports = (req, res) => {
   try {
     const profileUpload = async () => {
       let _keys = Object.keys(req.files);
-      console.log(_keys, "_keys_keys_keys")
+      console.log(_keys, "_keys_keys_keys");
       if (_keys[0] === "profile-upload") {
         uploadProfile();
       } else {
-        console.log("<><><><><><><>M<>")
+        console.log("<><><><><><><>M<>");
         await uploadMultipleImages();
       }
     };

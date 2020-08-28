@@ -46,7 +46,7 @@ module.exports = (req, res) => {
     let _arr = [];
     profile.findAndCountAll({
         // where: _variable,
-        limit:20,
+        limit:500,
         offset: offset ? offset : 0,
         order: [
             ['updatedAt', 'DESC']
